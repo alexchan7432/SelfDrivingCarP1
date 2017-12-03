@@ -1,9 +1,4 @@
 # **Finding Lane Lines on the Road** 
-
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Finding Lane Lines on the Road**
@@ -15,33 +10,32 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
 ---
 
 ### Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+The first step, I converted to grayscale, applied a gaussian blur, and then canny edge detection to find the edges.  
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+Once I had that, I applied the region of interest function.  Initially, I had used a triangle instead of a trapezoid, but I was getting unwanted lines at the peak.  The examples provided showed a trapzeoid as well, so I thought it would be better anyway.
+
+Finally, I applied the hough transform to get the lines.  Within the draw lines function, I realized I had a bunch of points which I could use to calculate a linear regression line.  Once I had this, I wanted the lines to extend to the y values, so I had calculate the x values from the two formulas.
+
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image1]
+![alt text][image1]:
 
 
 ### 2. Identify potential shortcomings with your current pipeline
-
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
+Potential shortcomings include.
+1) Assumes lanes are fairly straight.
+2) Lanes are a narrow range of color.
+3) Lanes are in a narrow region.
+4) Probably woudln't work so well at night time.
+5) Probably wouldn't work if there are similar color objects within the lane itself
 ### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+1) Fix potential shortcomings above
+2) Try different color ranges
+3) Try to accommodate curve lines
