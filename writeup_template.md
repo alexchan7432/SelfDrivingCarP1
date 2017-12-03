@@ -22,10 +22,8 @@ Once I had that, I applied the region of interest function.  Initially, I had us
 
 Finally, I applied the hough transform to get the lines.  Within the draw lines function, I realized I had a bunch of points which I could use to calculate a linear regression line.  Once I had this, I wanted the lines to extend to the y values, so I had calculate the x values from the two formulas.
 
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]:
+An example output
+![alt text][image1]:./test_images_output/solidWhiteCurve.jpg
 
 
 ### 2. Identify potential shortcomings with your current pipeline
